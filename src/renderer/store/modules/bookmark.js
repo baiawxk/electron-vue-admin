@@ -7,5 +7,6 @@ const items = [...bookmarks, ...shouqu, ...juejin]
 export default {
   state: {
     items
-  }
+  },
+  getters: {}
 }

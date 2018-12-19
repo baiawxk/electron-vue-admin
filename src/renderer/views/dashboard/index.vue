@@ -1,35 +1,52 @@
 <template>
   <div class="dashboard-container">
-    <h1>当前有菜单：{{menus.length}}</h1>
-
+    <el-container>
+      <el-main>
+        <p>当前有菜单：{{menus.length}}</p>
+        <div>
+          <el-row :gutter="12">
+            <el-col
+              :span="6"
+              v-for="item in testMenus"
+              :key="item.id"
+            >
+              <el-card
+                shadow="hover"
+                :body-style="{height:'100px'}"
+                @click.native="open(item.url)"
+              >
+                <header>{{item.title}}</header>
+              </el-card>
+              <br>
+            </el-col>
+          </el-row>
+        </div>
+      </el-main>
+    </el-container>
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
+import _ from "lodash";
 
 export default {
   name: "dashboard",
   data: function() {
-    console.log(this);
-    const groups = [];
+    let menus = this.$store.state.bookmark.items;
+    let testMenus = _.takeRight(menus, 10);
+    console.log(testMenus);
 
-    return {};
+    return { testMenus };
   },
   computed: {
     ...mapGetters(["menus"])
+  },
+  methods: {
+    open: function(url) {
+      console.log(url);
+      window.open(url);
+    }
   }
 };
 </script>
-
-<style rel="stylesheet/scss" lang="scss" scoped>
-.dashboard {
-  &-container {
-    margin: 30px;
-  }
-  &-text {
-    font-size: 30px;
-    line-height: 46px;
-  }
-}
-</style>
