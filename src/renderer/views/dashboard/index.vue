@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard-container">
-    <h1>{{menus}}</h1>
+    <h1>当前有菜单：{{menus.length}}</h1>
 
   </div>
 </template>
