@@ -1,5 +1,7 @@
 <template>
   <div class="dashboard-container">
+    <h1>{{menus}}</h1>
+
   </div>
 </template>
 
@@ -8,8 +10,14 @@ import { mapGetters } from "vuex";
 
 export default {
   name: "dashboard",
+  data: function() {
+    console.log(this);
+    const groups = [];
+
+    return {};
+  },
   computed: {
-    ...mapGetters(["name", "roles"])
+    ...mapGetters(["menus"])
   }
 };
 </script>
