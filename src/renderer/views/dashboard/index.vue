@@ -13,7 +13,7 @@
               <el-card
                 shadow="hover"
                 :body-style="{height:'100px'}"
-                @click.native="open(item.url)"
+                @click.native="opn(item.url)"
               >
                 <header>{{item.title}}</header>
               </el-card>
