@@ -34,8 +34,12 @@ export default {
   name: "dashboard",
   data: function() {
     let menus = this.$store.state.bookmark.items;
-    let testMenus = _.takeRight(menus, 10);
-    console.log(testMenus);
+    let testMenus = _.chain(menus)
+      .filter(function(menu) {
+        return menu.title !== "";
+      })
+      .takeRight(500)
+      .value();
 
     return { testMenus };
   },
