@@ -28,3 +28,6 @@ npm run pack
 ## TODO
 
 添加 uikit 支持 https://getuikit.com/docs/drop
+添加 driver.js yarn add driver.js 突出显示页面上的任何任何项目
+
+# 添加 hover.js

@@ -2,6 +2,7 @@
   <div class="dashboard-container">
     <el-container>
       <el-main>
+        <chqDndBoard></chqDndBoard> 
         <p>当前有菜单：{{menus.length}}</p>
         <div>
           <el-row :gutter="12">
@@ -29,9 +30,13 @@
 <script>
 import { mapGetters } from "vuex";
 import _ from "lodash";
-
+import chqDndBoard from './chqDndBoard';
+import $ from 'jquery';
 export default {
   name: "dashboard",
+  components:{
+    chqDndBoard
+  },
   data: function() {
     let menus = this.$store.state.bookmark.items;
     let testMenus = _.chain(menus)

@@ -11,7 +11,8 @@ const dbIns = {}
 
 function init() {
   for (const key in modules) {
-    const adapter = new FileSync('./bookmarks.json')
+    const path = modules[key]
+    const adapter = new FileSync(path)
     const db = low(adapter)
     dbIns[key] = db
   }

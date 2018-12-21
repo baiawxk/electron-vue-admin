@@ -1,4 +1,5 @@
 import opn from 'opn'
+import uuid from 'uuid/v1'
 
 function install(Vue, options) {
   // 1. 添加全局方法或属性
@@ -16,7 +17,8 @@ function install(Vue, options) {
   // 3. 注入组件
   Vue.mixin({
     methods: {
-      opn
+      opn,
+      uuid
     }
   })
 

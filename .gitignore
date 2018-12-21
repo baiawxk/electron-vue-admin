@@ -11,3 +11,4 @@ thumbs.db
 !.gitkeep
 yarn-error.log
 yarn.lock
+bower_components
