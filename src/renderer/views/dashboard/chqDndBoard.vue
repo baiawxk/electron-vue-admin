@@ -4,7 +4,24 @@
       class="chqDndBoard"
       ref="board"
     >
-
+      <div v-if="shortcuts">
+        <el-row :gutter="12">
+          <el-col
+            :span="6"
+            v-for="item in shortcuts"
+            :key="item.id"
+          >
+            <el-card
+              shadow="hover"
+              :body-style="{height:'100px'}"
+              @click.native="opn(item.path)"
+            >
+              <header>{{item.name}}</header>
+            </el-card>
+            <br>
+          </el-col>
+        </el-row>
+      </div>
     </el-card>
   </div>
 </template>
@@ -23,11 +40,14 @@ export default {
     chqDndBoard.off("drop").on("drop", function(e) {
       e.preventDefault();
       const dataTransfer = e.originalEvent.dataTransfer;
-      self.parseDropObj(dataTransfer);
+      const parseResult = self.parseDropObj(dataTransfer);
+      self.shortcuts.push(...parseResult);
     });
   },
   data: function() {
-    return {};
+    return {
+      shortcuts: []
+    };
   },
   methods: {
     parseDropObj: function(dataTransfer) {
@@ -42,18 +62,19 @@ export default {
     },
     parseDropFile: function(dataTransfer) {
       const self = this;
-      let files = dataTransfer.files;
+      const files = dataTransfer.files;
       let ary = [];
       if (files != 0 && files.length > 0) {
         for (let i = 0; i < files.length; i++) {
-          let file = files[i];
-          let name = file.name;
-          let path = file.path;
-          let id = self.uuid();
+          const file = files[i];
+          const name = file.name;
+          const path = file.path;
+          const id = self.uuid();
           ary.push({
             id,
             name,
-            path
+            path,
+            type: "file"
           });
         }
       }
