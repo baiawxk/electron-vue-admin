@@ -27,8 +27,7 @@
       "dist/electron/**/*"
     ],
     "dmg": {
-      "contents": [
-        {
+      "contents": [{
           "x": 410,
           "y": 150,
           "type": "link",
@@ -54,7 +53,6 @@
   "dependencies": {
     "axios": "0.17.1",
     "element-ui": "2.3.4",
-    "jQuery": "^1.7.4",
     "jquery": "^3.3.1",
     "js-cookie": "^2.2.0",
     "lowdb": "^1.0.0",
