@@ -1,6 +1,6 @@
 <template>
-  <div @drop.prevent="dropHandle">
-    <slot ref="board"></slot>
+  <div @drop.prevent="dropHandle" ref="board">
+    <slot></slot>
   </div>
 </template>
 
