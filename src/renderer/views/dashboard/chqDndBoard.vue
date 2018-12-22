@@ -1,5 +1,5 @@
 <template>
-  <div class="chqDndBoard" ref="board" @drop.prevent="dropHandle">
+  <div @drop.prevent="dropHandle">
     <slot ref="board"></slot>
   </div>
 </template>
@@ -11,18 +11,21 @@ export default {
     const self = this;
     const refs = self.$refs;
     const board = refs.board;
-    self.resetEvent(board)
+    self.resetEvent(board);
   },
   data: function() {
     return {};
   },
   methods: {
-    resetEvent:function(document) {
-      ['dragover','drop'].forEach(name => {
-        console.log(name);
-        document.addEventListener(name,function(event) {
-          event.preventDefault();
-        },false)
+    resetEvent: function(document) {
+      ["dragover", "drop"].forEach(name => {
+        document.addEventListener(
+          name,
+          function(event) {
+            event.preventDefault();
+          },
+          false
+        );
       });
     },
     dropHandle: function(e) {
