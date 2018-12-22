@@ -12,3 +12,4 @@ thumbs.db
 yarn-error.log
 yarn.lock
 bower_components
+src/renderer/db/data.json

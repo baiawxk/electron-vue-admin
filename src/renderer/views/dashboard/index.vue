@@ -11,17 +11,6 @@
             </el-row>
           </el-card>
         </chqDndBoard>
-        <!-- <p>当前有菜单：{{menus.length}}</p>
-        <div>
-          <el-row :gutter="12">
-            <el-col :span="6" v-for="item in testMenus" :key="item.id">
-              <el-card shadow="hover" :body-style="{height:'100px'}" @click.native="opn(item.url)">
-                <header>{{item.title}}</header>
-              </el-card>
-              <br>
-            </el-col>
-          </el-row>
-        </div>-->
       </el-main>
     </el-container>
   </div>
@@ -39,22 +28,15 @@ export default {
     chqDndShortcut
   },
   data: function() {
-    // let menus = this.$store.state.bookmark.items;
-    // let testMenus = _.chain(menus)
-    //   .filter(function(menu) {
-    //     return menu.title !== "";
-    //   })
-    //   .takeRight(500)
-    //   .value();
-
-    return { shortcuts: [] };
+    const self = this;
+    return { shortcuts: self.$store.state.shortcut.items };
   },
   computed: {
     ...mapGetters(["menus"])
   },
   methods: {
     dropHandle: function(items) {
-      this.shortcuts.push(...items);
+      this.$store.dispatch("add", items);
     }
   }
 };
