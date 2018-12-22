@@ -1,21 +1,10 @@
 <template>
   <div>
-    <el-card
-      class="chqDndBoard"
-      ref="board"
-    >
+    <el-card class="chqDndBoard" ref="board" @drop.native.prevent="dropHandle">
       <div v-if="shortcuts">
         <el-row :gutter="12">
-          <el-col
-            :span="6"
-            v-for="item in shortcuts"
-            :key="item.id"
-          >
-            <el-card
-              shadow="hover"
-              :body-style="{height:'100px'}"
-              @click.native="opn(item.path)"
-            >
+          <el-col :span="6" v-for="item in shortcuts" :key="item.id">
+            <el-card shadow="hover" :body-style="{height:'100px'}" @click.native="opn(item.path)">
               <header>{{item.name}}</header>
             </el-card>
             <br>
@@ -27,29 +16,21 @@
 </template>
 
 <script>
-import $ from "jquery";
 export default {
   name: "chqDndBoard",
-  mounted: function() {
-    const board = this.$refs.board.$el;
-    const chqDndBoard = $(board);
-    const self = this;
-    chqDndBoard.off("dragover").on("dragover", function(e) {
-      e.preventDefault();
-    });
-    chqDndBoard.off("drop").on("drop", function(e) {
-      e.preventDefault();
-      const dataTransfer = e.originalEvent.dataTransfer;
-      const parseResult = self.parseDropObj(dataTransfer);
-      self.shortcuts.push(...parseResult);
-    });
-  },
+  mounted: function() {},
   data: function() {
     return {
       shortcuts: []
     };
   },
   methods: {
+    dropHandle: function(e) {
+      const self = this;
+      const dataTransfer = e.dataTransfer;
+      const parseResult = self.parseDropObj(dataTransfer);
+      self.shortcuts.push(...parseResult);
+    },
     parseDropObj: function(dataTransfer) {
       const self = this;
       const parseResult = [
