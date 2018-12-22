@@ -1,35 +1,35 @@
 <template>
-  <div>
-    <el-card class="chqDndBoard" ref="board" @drop.native.prevent="dropHandle">
-      <div v-if="shortcuts">
-        <el-row :gutter="12">
-          <el-col :span="6" v-for="item in shortcuts" :key="item.id">
-            <el-card shadow="hover" :body-style="{height:'100px'}" @click.native="opn(item.path)">
-              <header>{{item.name}}</header>
-            </el-card>
-            <br>
-          </el-col>
-        </el-row>
-      </div>
-    </el-card>
+  <div class="chqDndBoard" ref="board" @drop.prevent="dropHandle">
+    <slot ref="board"></slot>
   </div>
 </template>
 
 <script>
 export default {
   name: "chqDndBoard",
-  mounted: function() {},
+  mounted: function() {
+    const self = this;
+    const refs = self.$refs;
+    const board = refs.board;
+    self.resetEvent(board)
+  },
   data: function() {
-    return {
-      shortcuts: []
-    };
+    return {};
   },
   methods: {
+    resetEvent:function(document) {
+      ['dragover','drop'].forEach(name => {
+        console.log(name);
+        document.addEventListener(name,function(event) {
+          event.preventDefault();
+        },false)
+      });
+    },
     dropHandle: function(e) {
       const self = this;
       const dataTransfer = e.dataTransfer;
       const parseResult = self.parseDropObj(dataTransfer);
-      self.shortcuts.push(...parseResult);
+      self.$emit("drop", parseResult);
     },
     parseDropObj: function(dataTransfer) {
       const self = this;
@@ -97,10 +97,3 @@ export default {
   }
 };
 </script>
-
-
-<style scoped>
-.chqDndBoard {
-  min-height: 160px;
-}
-</style>
