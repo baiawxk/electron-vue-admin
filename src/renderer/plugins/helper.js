@@ -3,7 +3,7 @@ import uuid from 'uuid/v1'
 
 function install(Vue, options) {
   // 1. 添加全局方法或属性
-  Vue.myGlobalMethod = function() {
+  Vue.myGlobalMethod = function () {
     // 逻辑...
   }
 
@@ -19,11 +19,12 @@ function install(Vue, options) {
     methods: {
       opn,
       uuid
-    }
+    },
+
   })
 
   // 4. 添加实例方法
-  Vue.prototype.$myMethod = function(methodOptions) {
+  Vue.prototype.$myMethod = function (methodOptions) {
     // 逻辑...
   }
 }

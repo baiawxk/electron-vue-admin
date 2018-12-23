@@ -5,7 +5,15 @@
         <chqDndBoard @drop="dropHandle">
           <el-card style="min-height:120px;">
             <el-row :gutter="12">
-              <el-col :span="6" v-for="item in shortcuts" :key="item.id">
+              <el-col
+                :xs="12"
+                :sm="8"
+                :md="6"
+                :lg="6"
+                :xl="4"
+                v-for="item in shortcuts"
+                :key="item.id"
+              >
                 <chqDndShortcut :data="item"></chqDndShortcut>
               </el-col>
             </el-row>

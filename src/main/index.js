@@ -1,4 +1,7 @@
-import electron, { app, BrowserWindow } from 'electron'
+import electron, {
+  app,
+  BrowserWindow
+} from 'electron'
 /**
  * Set `__static` path to static files in production
  * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-static-assets.html
@@ -8,9 +11,9 @@ if (process.env.NODE_ENV !== 'development') {
 }
 
 let mainWindow
-const winURL = process.env.NODE_ENV === 'development'
-  ? `http://localhost:9080`
-  : `file://${__dirname}/index.html`
+const winURL = process.env.NODE_ENV === 'development' ?
+  `http://localhost:9080` :
+  `file://${__dirname}/index.html`
 
 function createWindow() {
   const screen = electron.screen
@@ -20,7 +23,7 @@ function createWindow() {
    */
   mainWindow = new BrowserWindow({
     width: size.width * 0.8,
-    height: size.height * 1,
+    height: size.height * 0.9,
     title: 'ChqPortal',
     useContentSize: true,
     webPreferences: {

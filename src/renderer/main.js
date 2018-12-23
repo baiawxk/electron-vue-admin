@@ -10,6 +10,7 @@ import helper from './plugins/helper'
 import App from './App'
 import router from './router'
 import store from './store'
+import 'font-awesome/css/font-awesome.css'
 
 import '@/icons' // icon
 // remove login component

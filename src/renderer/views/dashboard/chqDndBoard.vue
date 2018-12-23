@@ -1,5 +1,8 @@
 <template>
-  <div @drop.prevent="dropHandle" ref="board">
+  <div
+    @drop.prevent="dropHandle"
+    ref="board"
+  >
     <slot></slot>
   </div>
 </template>
@@ -41,6 +44,9 @@ export default {
         ...self.parseDropText(dataTransfer),
         ...self.parseDropOther(dataTransfer)
       ];
+      console.log(dataTransfer.items);
+      console.log(dataTransfer.types);
+      console.log(dataTransfer.files);
       console.table(parseResult);
       return parseResult;
     },
@@ -65,6 +71,7 @@ export default {
       return ary;
     },
     parseDropText: function(dataTransfer) {
+      const self = this;
       let items = dataTransfer.items;
       let ary = [];
       if (items != 0 && items.length > 0) {
@@ -73,10 +80,23 @@ export default {
           let kind = item.kind;
           let type = item.type;
           if (item.kind == "string") {
-            var str = dataTransfer.getData(type);
             if (type == "json") {
               let data = JSON.parse(dataTransfer.getData(type));
-              ary.push(data);
+              console.log(data);
+            } else if (type == "text/plain") {
+              let data = dataTransfer.getData(type);
+              console.log(type, "###", data);
+            } else if (type == "text/html") {
+              let data = dataTransfer.getData(type);
+              console.log(type, "###", data);
+            } else if (type == "text/uri-list") {
+              let data = dataTransfer.getData(type);
+              ary.push({
+                type: "uri",
+                id: self.uuid(),
+                uri: data,
+                name: data
+              });
             }
           }
         }
