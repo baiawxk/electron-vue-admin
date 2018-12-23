@@ -1,13 +1,7 @@
 <template>
   <div>
-    <chqDndBoard>
-      <chqDndItem
-        @click.native="info"
-        @drop="download(url)"
-        title="小米路由器下载"
-        icon="fa-cloud-download"
-      ></chqDndItem>
-
+    <chqDndBoard @drop="download">
+      <chqDndItem @click.native="info" title="小米路由器下载" icon="fa-cloud-download"></chqDndItem>
     </chqDndBoard>
   </div>
 </template>
@@ -15,6 +9,7 @@
 <script>
 import chqDndBoard from "@/views/dashboard/chqDndBoard";
 import chqDndItem from "@/views/dashboard/chqDndItem";
+import mirouter from "@/utils/mirouter";
 export default {
   name: "chqMiRouter",
   components: {
@@ -26,7 +21,16 @@ export default {
       this.$message("请拖动下载元素至本插件进行下载");
     },
     download: data => {
-      console.log(data);
+      if (data != null) {
+        for (let i in data) {
+          const item = data[i];
+          const type = item["type"];
+          if ("uri" == type) {
+            const uri = item["uri"];
+            mirouter.dlUrl(uri);
+          }
+        }
+      }
     }
   }
 };
