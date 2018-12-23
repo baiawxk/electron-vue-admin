@@ -2,6 +2,23 @@
   <div class="dashboard-container">
     <el-container>
       <el-main>
+        <div>
+          <el-card>
+            <p>插件</p>
+            <el-row :gutter="12">
+              <el-col
+                :xs="12"
+                :sm="8"
+                :md="6"
+                :lg="6"
+                :xl="4"
+              >
+                <chqMiRouter></chqMiRouter>
+              </el-col>
+            </el-row>
+          </el-card>
+          <br>
+        </div>
         <chqDndBoard @drop="dropHandle">
           <el-card style="min-height:120px;">
             <el-row :gutter="12">
@@ -29,11 +46,14 @@ import { mapGetters } from "vuex";
 import _ from "lodash";
 import chqDndBoard from "./chqDndBoard";
 import chqDndShortcut from "./chqDndShortcut";
+import chqMiRouter from "@/views/dashboard/plugins/chqMiRouter";
+
 export default {
   name: "dashboard",
   components: {
     chqDndBoard,
-    chqDndShortcut
+    chqDndShortcut,
+    chqMiRouter
   },
   data: function() {
     const self = this;
