@@ -1,56 +1,23 @@
 <template>
   <div v-if="data">
     <div v-if="data.type=='file'">
-      <el-card
-        shadow="hover"
-        :body-style="{height:'100px'}"
+      <chqDndItem
+        :title="data.name"
+        :icon="data.name|getFileType|getIcon"
         @click.native="opn(data.path)"
-      >
-        <el-row
-          :gutter="20"
-          style="height:100%"
-          align="middle"
-          justify="center"
-          type="flex"
-        >
-          <el-col
-            :xs="8"
-            :sm="8"
-            :md="8"
-            :lg="6"
-            :xl="4"
-          >
-            <div>
-              <span class="fa-stack fa-lg">
-                <i class="fa fa-stack-2x"></i>
-                <i
-                  class="fa fa-stack-1x fa-inverse1"
-                  :class="data.name | getFileType | getIcon"
-                ></i>
-              </span>
-            </div>
-          </el-col>
-          <el-col
-            :xs="
-                  16"
-            :sm="16"
-            :md="16"
-            :lg="18"
-            :xl="20"
-          >
-            <div>{{data.name }}</div>
-          </el-col>
-        </el-row>
-      </el-card>
-
+      ></chqDndItem>
       <br>
     </div>
   </div>
 </template>
 
 <script>
+import chqDndItem from "@/views/dashboard/chqDndItem";
 export default {
   name: "chqDndShortcut",
+  components: {
+    chqDndItem
+  },
   mounted: function() {},
   data: function() {
     return {};
