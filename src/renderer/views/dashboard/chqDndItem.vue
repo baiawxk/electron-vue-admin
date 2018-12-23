@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="chqDndItem">
     <el-card
       shadow="hover"
       :body-style="{height:'100px'}"
@@ -57,3 +57,8 @@ export default {
   methods: {}
 };
 </script>
+<style scoped>
+.chqDndItem {
+  cursor: pointer;
+}
+</style>

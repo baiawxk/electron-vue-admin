@@ -2,7 +2,7 @@
   <div v-if="data">
     <div v-if="data.type=='file'">
       <chqDndItem
-        :title="data.name"
+        :title="data.name|removeFileType"
         :icon="data.name|getFileType|getIcon"
         @click.native="opn(data.path)"
       ></chqDndItem>
