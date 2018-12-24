@@ -5,6 +5,7 @@
         <div>
           <el-card>
             <p>插件</p>
+            <!-- TODO there is to optimize  -->
             <el-row :gutter="12">
               <el-col
                 :xs="12"
@@ -23,6 +24,15 @@
                 :xl="4"
               >
                 <chqFenCi></chqFenCi>
+              </el-col>
+              <el-col
+                :xs="12"
+                :sm="8"
+                :md="6"
+                :lg="6"
+                :xl="4"
+              >
+                <chq-url-meta></chq-url-meta>
               </el-col>
             </el-row>
           </el-card>
@@ -55,8 +65,10 @@ import { mapGetters } from "vuex";
 import _ from "lodash";
 import chqDndBoard from "./chqDndBoard";
 import chqDndShortcut from "./chqDndShortcut";
+//TODO optimize
 import chqMiRouter from "@/views/dashboard/plugins/chqMiRouter";
 import chqFenCi from "@/views/dashboard/plugins/chqFenci";
+import chqUrlMeta from "@/views/dashboard/plugins/chqUrlMeta";
 
 export default {
   name: "dashboard",
@@ -64,7 +76,8 @@ export default {
     chqDndBoard,
     chqDndShortcut,
     chqMiRouter,
-    chqFenCi
+    chqFenCi,
+    chqUrlMeta
   },
   data: function() {
     const self = this;
