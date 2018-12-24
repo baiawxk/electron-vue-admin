@@ -15,6 +15,15 @@
               >
                 <chqMiRouter></chqMiRouter>
               </el-col>
+              <el-col
+                :xs="12"
+                :sm="8"
+                :md="6"
+                :lg="6"
+                :xl="4"
+              >
+                <chqFenCi></chqFenCi>
+              </el-col>
             </el-row>
           </el-card>
           <br>
@@ -47,13 +56,15 @@ import _ from "lodash";
 import chqDndBoard from "./chqDndBoard";
 import chqDndShortcut from "./chqDndShortcut";
 import chqMiRouter from "@/views/dashboard/plugins/chqMiRouter";
+import chqFenCi from "@/views/dashboard/plugins/chqFenci";
 
 export default {
   name: "dashboard",
   components: {
     chqDndBoard,
     chqDndShortcut,
-    chqMiRouter
+    chqMiRouter,
+    chqFenCi
   },
   data: function() {
     const self = this;
