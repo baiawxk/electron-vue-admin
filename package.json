@@ -54,11 +54,13 @@
   "dependencies": {
     "animate.css": "^3.7.0",
     "axios": "0.17.1",
+    "cheerio": "^1.0.0-rc.2",
     "element-ui": "2.3.4",
     "font-awesome": "^4.7.0",
     "jquery": "^3.3.1",
     "js-cookie": "^2.2.0",
     "lowdb": "^1.0.0",
+    "node-fetch": "^2.3.0",
     "normalize.css": "7.0.0",
     "nprogress": "0.2.0",
     "opn": "^5.4.0",
