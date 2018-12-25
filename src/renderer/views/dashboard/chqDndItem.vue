@@ -2,6 +2,7 @@
   <div class="chqDndItem">
     <el-card
       shadow="hover"
+      class="animated zoomIn fast"
       :body-style="{height:'100px'}"
     >
       <el-row
