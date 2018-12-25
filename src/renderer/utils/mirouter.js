@@ -1,21 +1,21 @@
-let url = 'https://d.miwifi.com/d2r?url=';
+const url = 'https://d.miwifi.com/d2r?url='
 
-let Base64 = require('js-base64').Base64;
+const Base64 = require('js-base64').Base64
 
-let opn = require('opn');
+const opn = require('opn')
 
-exports.genUrl = function (url) {
-    let dl = 'https://d.miwifi.com/d2r/'
-    if (url == null)
-        return dl;
-    else {
-        let base = Base64.encode(url);
-        let returnUrl = `${dl}?url=${base}`;
-        return returnUrl;
-    }
+exports.genUrl = function(url) {
+  const dl = 'https://d.miwifi.com/d2r/'
+  if (url == null) {
+    return dl
+  } else {
+    const base = Base64.encode(url)
+    const returnUrl = `${dl}?url=${base}`
+    return returnUrl
+  }
 }
 
-exports.dlUrl = function (url) {
-    let rl = this.genUrl(url);
-    opn(rl);
+exports.dlUrl = function(url) {
+  const rl = this.genUrl(url)
+  opn(rl)
 }

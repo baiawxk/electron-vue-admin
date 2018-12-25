@@ -40,6 +40,7 @@
         </div>
         <chqDndBoard @drop="dropHandle">
           <el-card style="min-height:120px;">
+            <p>快捷方式</p>
             <el-row :gutter="12">
               <el-col
                 :xs="12"
