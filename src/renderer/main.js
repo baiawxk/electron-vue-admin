@@ -11,7 +11,7 @@ import App from './App'
 import router from './router'
 import store from './store'
 import 'font-awesome/css/font-awesome.css'
-import animated from 'animate.css' // npm install animate.css --save安装，在引入
+// import animated from 'animate.css' // npm install animate.css --save安装，在引入
 
 import '@/icons' // icon
 // remove login component
@@ -23,7 +23,7 @@ Vue.use(ElementUI, {
   locale
 })
 Vue.use(helper)
-Vue.use(animated)
+// Vue.use(animated)
 
 Vue.config.productionTip = false
 
