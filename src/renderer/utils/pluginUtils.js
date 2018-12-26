@@ -11,7 +11,7 @@ function getUrlMeta(urlString) {
   const favicon = `${protocol}//${host}/favicon.ico`
 
   return new Promise(function(resolve, reject) {
-    fetch('http://www.baidu.com/')
+    fetch(urlString)
       .then(res => res.text())
       .then(function(body) {
         const $ = cheerio.load(body)
