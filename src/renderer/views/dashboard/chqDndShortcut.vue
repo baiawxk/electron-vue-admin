@@ -5,8 +5,33 @@
         :title="data.name|removeFileType"
         :icon="data.name|getFileType|getIcon"
         @click.native="opn(data.path)"
+        @click.native.right="dialogVisible = true"
       ></chqDndItem>
       <br>
+      <el-dialog
+        title="设定"
+        :visible.sync="dialogVisible"
+        width="80%"
+        center
+      >
+        <el-form label-width="80px">
+          <el-form-item label="名字">
+            <el-input v-model="data.name"></el-input>
+          </el-form-item>
+          <el-form-item label="路径">
+            <el-input v-model="data.path"></el-input>
+          </el-form-item>
+        </el-form>
+        <span
+          slot="footer"
+          class="dialog-footer"
+        >
+          <el-button
+            type="primary"
+            @click="dialogVisible=false"
+          >关闭</el-button>
+        </span>
+      </el-dialog>
     </div>
   </div>
 </template>
@@ -20,7 +45,9 @@ export default {
   },
   mounted: function() {},
   data: function() {
-    return {};
+    return {
+      dialogVisible: false
+    };
   },
   props: {
     data: Object
