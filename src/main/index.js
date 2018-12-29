@@ -48,8 +48,8 @@ function createSubDropWin() {
   } = electron.screen.getPrimaryDisplay().workAreaSize
 
   const url = process.env.NODE_ENV === 'development' ?
-    `http://localhost:9080/subWin.html` :
-    `file://${__dirname}/subWin.html`
+    `http://localhost:9080/static/subWin.html` :
+    `file://${__dirname}/static/subWin.html`
 
   /**
    * Initial window options

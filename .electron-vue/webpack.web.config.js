@@ -92,16 +92,6 @@ let webConfig = {
       },
       nodeModules: false
     }),
-    new HtmlWebpackPlugin({
-      filename: 'subWin.html',
-      template: path.resolve(__dirname, '../src/subWin.ejs'),
-      minify: {
-        collapseWhitespace: true,
-        removeAttributeQuotes: true,
-        removeComments: true
-      },
-      nodeModules: false
-    }),
     new webpack.DefinePlugin({
       'process.env.IS_WEB': 'true'
     }),
