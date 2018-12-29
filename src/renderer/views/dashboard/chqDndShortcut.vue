@@ -27,6 +27,12 @@
           class="dialog-footer"
         >
           <el-button
+            type="danger"
+            @click="dialogVisible=false"
+          >
+            删除
+          </el-button>
+          <el-button
             type="primary"
             @click="dialogVisible=false"
           >关闭</el-button>
@@ -90,6 +96,10 @@ export default {
       }
     }
   },
-  methods: {}
+  methods: {
+    delete: function(id) {
+      this.$message("are you sure to delete");
+    }
+  }
 };
 </script>

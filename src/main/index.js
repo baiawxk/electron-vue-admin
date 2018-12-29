@@ -25,6 +25,7 @@ function createWindow() {
     width: size.width * 0.8,
     height: size.height * 0.9,
     title: 'ChqPortal',
+    frame: false,
     useContentSize: true,
     webPreferences: {
       navigateOnDragDrop: false
@@ -38,7 +39,51 @@ function createWindow() {
   })
 }
 
-app.on('ready', createWindow)
+let subDropWin = null;
+
+function createSubDropWin() {
+  const {
+    width,
+    height
+  } = electron.screen.getPrimaryDisplay().workAreaSize
+
+  const url = process.env.NODE_ENV === 'development' ?
+    `http://localhost:9080/subWin.html` :
+    `file://${__dirname}/subWin.html`
+
+  /**
+   * Initial window options
+   */
+  subDropWin = new BrowserWindow({
+    width: 200,
+    height: 200,
+    x: width - 200,
+    y: height - 200,
+    resizable: false,
+    transparent: false,
+    title: 'Pocket',
+    useContentSize: true,
+    alwaysOnTop: true,
+    frame: false,
+    webPreferences: {
+      navigateOnDragDrop: false,
+      devTools: false
+    }
+  })
+
+  subDropWin.loadURL(url)
+
+  subDropWin.on('closed', () => {
+    subDropWin = null
+  })
+}
+
+function init() {
+  createWindow()
+  // createSubDropWin()
+}
+
+app.on('ready', init)
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {

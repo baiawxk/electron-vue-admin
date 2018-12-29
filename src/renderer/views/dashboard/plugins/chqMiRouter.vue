@@ -1,7 +1,11 @@
 <template>
   <div>
     <chqDndBoard @drop="download">
-      <chqDndItem @click.native="info" title="小米路由器下载" icon="fa-cloud-download"></chqDndItem>
+      <chqDndItem
+        @click.native="info"
+        title="小米路由器下载"
+        icon="fa-cloud-download"
+      ></chqDndItem>
     </chqDndBoard>
   </div>
 </template>

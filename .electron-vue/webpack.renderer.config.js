@@ -134,14 +134,24 @@ let rendererConfig = {
         removeComments: true
       },
       nodeModules: process.env.NODE_ENV !== 'production' ?
-        path.resolve(__dirname, '../node_modules') :
-        false
+        path.resolve(__dirname, '../node_modules') : false
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'subWin.html',
+      template: path.resolve(__dirname, '../src/subWin.ejs'),
+      minify: {
+        collapseWhitespace: true,
+        removeAttributeQuotes: true,
+        removeComments: true
+      },
+      nodeModules: process.env.NODE_ENV !== 'production' ?
+        path.resolve(__dirname, '../node_modules') : false
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.ProvidePlugin({
-      jQuery:'jquery',
-      $:'jquery'
+      jQuery: 'jquery',
+      $: 'jquery'
     })
   ],
   output: {

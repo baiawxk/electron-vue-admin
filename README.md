@@ -29,5 +29,6 @@ npm run pack
 
 添加 uikit 支持 https://getuikit.com/docs/drop
 添加 driver.js yarn add driver.js 突出显示页面上的任何任何项目
+增加翻译 https://fanyi.baidu.com/?aldtype=85#en/zh/GOD%20BLESS%20YOU
 
 # 添加 hover.js
