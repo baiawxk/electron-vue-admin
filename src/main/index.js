@@ -51,6 +51,8 @@ function createSubDropWin() {
     `http://localhost:9080/static/subWin.html` :
     `file://${__dirname}/static/subWin.html`
 
+  console.log(url);
+
   /**
    * Initial window options
    */
@@ -67,7 +69,7 @@ function createSubDropWin() {
     frame: false,
     webPreferences: {
       navigateOnDragDrop: false,
-      devTools: false
+      devTools: true
     }
   })
 
