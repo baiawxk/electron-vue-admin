@@ -28,7 +28,7 @@
         >
           <el-button
             type="danger"
-            @click="dialogVisible=false"
+            @click="del(data)"
           >
             删除
           </el-button>
@@ -97,8 +97,15 @@ export default {
     }
   },
   methods: {
-    delete: function(id) {
-      this.$message("are you sure to delete");
+    del: function(data) {
+      let self = this;
+      self.$confirm(`确定删除 ${data.name}`).then(function() {
+        console.log(self.$dispatch);
+        self.$store.dispatch("del", data.id);
+        self.dialogVisible = false;
+        // self.$forceUpdate();
+        // console.log(self.$forceUpdate);
+      });
     }
   }
 };

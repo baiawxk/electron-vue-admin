@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapState } from "vuex";
 import _ from "lodash";
 import chqDndBoard from "./chqDndBoard";
 import chqDndShortcut from "./chqDndShortcut";
@@ -82,10 +82,13 @@ export default {
   },
   data: function() {
     const self = this;
-    return { shortcuts: self.$store.state.shortcut.items };
+    return {};
   },
   computed: {
-    ...mapGetters(["menus"])
+    ...mapGetters(["menus"]),
+    ...mapState({
+      shortcuts: state => state.shortcut.items
+    })
   },
   methods: {
     dropHandle: function(items) {
