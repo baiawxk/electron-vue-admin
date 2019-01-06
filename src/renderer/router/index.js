@@ -33,7 +33,29 @@ export const constantRouterMap = [{
   },
   {
     path: '/todo',
-    component: () => import('@/views/todo/index.vue'),
+    component: Layout,
+    children: [{
+      path: 'index',
+      name: "Todos",
+      meta: {
+        title: 'Todos',
+        icon: 'example'
+      },
+      component: () => import('@/views/todo/index')
+    }]
+  },
+  {
+    path: '/dashboard',
+    component: Layout,
+    children: [{
+      path: 'index',
+      name: "Shortcuts",
+      meta: {
+        title: 'Shortcuts',
+        icon: 'example'
+      },
+      component: () => import('@/views/dashboard/index')
+    }]
   },
   {
     path: '/input',
@@ -41,16 +63,10 @@ export const constantRouterMap = [{
   },
   {
     path: '/',
-    component: Layout,
     redirect: '/dashboard',
     name: 'Dashboard',
     hidden: true,
-    children: [{
-      path: 'dashboard',
-      component: () => import('@/views/dashboard/index')
-    }]
   },
-
   {
     path: '/example',
     component: Layout,
