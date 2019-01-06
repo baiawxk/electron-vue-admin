@@ -39,6 +39,36 @@ function createWindow() {
   })
 }
 
+let inputWindow = null;
+
+function createInputWindow() {
+  const screen = electron.screen
+  const size = screen.getPrimaryDisplay().workAreaSize
+
+  const winURL = process.env.NODE_ENV === 'development' ?
+    `http://localhost:9080/#/input` :
+    `file://${__dirname}/#/input`
+  /**
+   * Initial window options
+   */
+  inputWindow = new BrowserWindow({
+    width: size.width * 0.8,
+    height: size.height * 0.9,
+    title: 'ChqPortal',
+    frame: false,
+    useContentSize: true,
+    webPreferences: {
+      navigateOnDragDrop: false
+    }
+  })
+
+  inputWindow.loadURL(winURL)
+
+  inputWindow.on('closed', () => {
+    inputWindow = null
+  })
+}
+
 let subDropWin = null;
 
 function createSubDropWin() {
@@ -83,6 +113,7 @@ function createSubDropWin() {
 function init() {
   createWindow()
   // createSubDropWin()
+  createInputWindow()
 }
 
 app.on('ready', init)
