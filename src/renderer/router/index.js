@@ -32,6 +32,10 @@ export const constantRouterMap = [{
     hidden: true
   },
   {
+    path: '/todo',
+    component: () => import('@/views/todo/index.vue'),
+  },
+  {
     path: '/input',
     component: () => import('@/views/input/index.vue'),
   },

@@ -12,7 +12,7 @@ if (process.env.NODE_ENV !== 'development') {
 
 let mainWindow
 const winURL = process.env.NODE_ENV === 'development' ?
-  `http://localhost:9080` :
+  `http://localhost:9080/#/todo` :
   `file://${__dirname}/index.html`
 
 function createWindow() {
@@ -25,7 +25,7 @@ function createWindow() {
     width: size.width * 0.8,
     height: size.height * 0.9,
     title: 'ChqPortal',
-    frame: false,
+    frame: true,
     useContentSize: true,
     webPreferences: {
       navigateOnDragDrop: false
@@ -55,7 +55,7 @@ function createInputWindow() {
     width: size.width * 0.8,
     height: size.height * 0.9,
     title: 'ChqPortal',
-    frame: false,
+    frame: true,
     useContentSize: true,
     webPreferences: {
       navigateOnDragDrop: false
@@ -96,7 +96,7 @@ function createSubDropWin() {
     title: 'Pocket',
     useContentSize: true,
     alwaysOnTop: true,
-    frame: false,
+    frame: true,
     webPreferences: {
       navigateOnDragDrop: false,
       devTools: true
@@ -113,7 +113,7 @@ function createSubDropWin() {
 function init() {
   createWindow()
   // createSubDropWin()
-  createInputWindow()
+  // createInputWindow()
 }
 
 app.on('ready', init)

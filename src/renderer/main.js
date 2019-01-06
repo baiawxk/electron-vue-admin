@@ -6,6 +6,7 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import locale from 'element-ui/lib/locale/lang/en' // lang i18n
 import helper from './plugins/helper'
+import filters from './plugins/filters'
 
 import App from './App'
 import router from './router'
@@ -23,6 +24,7 @@ Vue.use(ElementUI, {
   locale
 })
 Vue.use(helper)
+Vue.mixin(filters)
 // Vue.use(animated)
 
 Vue.config.productionTip = false

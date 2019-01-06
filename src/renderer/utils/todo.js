@@ -1,5 +1,7 @@
 import lo from 'lodash'
 import pinyin from 'pinyin4js'
+import uuid from 'uuid/v1'
+
 import Segmentit, {
   useDefault
 } from 'segmentit';
@@ -38,6 +40,7 @@ const opt_dft = {
 function get(str, opt) {
   if (!lo.isEmpty(str)) {
     let obj = {
+      id: uuid(),
       title: str,
       createTime: new Date().getTime()
     }
