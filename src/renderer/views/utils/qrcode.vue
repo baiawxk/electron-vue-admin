@@ -33,6 +33,7 @@ export default {
     genQrCode() {
       let qrcodeStr = this.$data.qrcodeStr;
       let canvas = this.$refs.canvas;
+      if (qrcodeStr === "") return;
       QRCode.toCanvas(canvas, qrcodeStr, function(error) {
         if (error) console.error(error);
         console.log("success!");
