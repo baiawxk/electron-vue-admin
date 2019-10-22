@@ -31,52 +31,31 @@ export const constantRouterMap = [{
     component: () => import('@/views/404'),
     hidden: true
   },
-
   {
     path: '/',
+    redirect: '/news/index',
+  },
+  {
+    path: '/news',
     component: Layout,
-    redirect: '/dashboard',
-    name: 'Dashboard',
-    hidden: true,
     children: [{
-      path: 'dashboard',
-      component: () => import('@/views/dashboard/index')
+      path: 'index',
+      name: 'Index',
+      component: () => import('@/views/index'),
+      meta: {
+        title: 'Index',
+        icon: 'form'
+      }
     }]
   },
-
-  {
-    path: '/example',
-    component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: {
-      title: 'Example',
-      icon: 'example'
-    },
-    children: [{
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: {
-          title: 'Table',
-          icon: 'table'
-        }
-      },
-      {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: {
-          title: 'Tree',
-          icon: 'tree'
-        }
-      }
-    ]
-  },
-
   {
     path: '/utils',
+    name: 'Utils',
     component: Layout,
+    meta: {
+      title: 'Utils',
+      icon: 'form'
+    },
     children: [{
       path: 'qrcode',
       name: "GenQrCodePage",
@@ -85,9 +64,16 @@ export const constantRouterMap = [{
         title: 'Gen QrCode',
         icon: 'form'
       }
+    }, {
+      path: 'dashboard',
+      name: "Dashboard",
+      component: () => import('@/views/dashboard/index'),
+      meta: {
+        title: 'Dashboard',
+        icon: 'form'
+      }
     }]
   },
-
   {
     path: '/form',
     component: Layout,
