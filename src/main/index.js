@@ -25,10 +25,11 @@ function createWindow() {
     width: size.width * 0.8,
     height: size.height * 0.9,
     title: 'ChqPortal',
-    frame: false,
+    frame: true,
     useContentSize: true,
     webPreferences: {
-      navigateOnDragDrop: false
+      navigateOnDragDrop: false,
+      devTools: false
     }
   })
 

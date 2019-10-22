@@ -43,7 +43,7 @@ export const constantRouterMap = [{
       name: 'Index',
       component: () => import('@/views/index'),
       meta: {
-        title: 'Index',
+        title: 'Normal',
         icon: 'form'
       }
     }]
@@ -52,6 +52,7 @@ export const constantRouterMap = [{
     path: '/utils',
     name: 'Utils',
     component: Layout,
+    redirect: '/utils/dashboard',
     meta: {
       title: 'Utils',
       icon: 'form'
