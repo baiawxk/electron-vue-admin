@@ -32,6 +32,19 @@ export const constantRouterMap = [{
     hidden: true
   },
   {
+    path: '/todo',
+    component: Layout,
+    children: [{
+      path: 'index',
+      name: "Todos",
+      meta: {
+        title: 'Todos',
+        icon: 'example'
+      },
+      component: () => import('@/views/todo/index')
+    }]
+  },
+  {
     path: '/',
     redirect: '/news/index',
   },

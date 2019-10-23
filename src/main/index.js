@@ -12,7 +12,7 @@ if (process.env.NODE_ENV !== 'development') {
 
 let mainWindow
 const winURL = process.env.NODE_ENV === 'development' ?
-  `http://localhost:9080` :
+  `http://localhost:9080/#/todo` :
   `file://${__dirname}/index.html`
 
 function createWindow() {
@@ -37,6 +37,36 @@ function createWindow() {
 
   mainWindow.on('closed', () => {
     mainWindow = null
+  })
+}
+
+let inputWindow = null;
+
+function createInputWindow() {
+  const screen = electron.screen
+  const size = screen.getPrimaryDisplay().workAreaSize
+
+  const winURL = process.env.NODE_ENV === 'development' ?
+    `http://localhost:9080/#/input` :
+    `file://${__dirname}/#/input`
+  /**
+   * Initial window options
+   */
+  inputWindow = new BrowserWindow({
+    width: size.width * 0.8,
+    height: size.height * 0.9,
+    title: 'ChqPortal',
+    frame: true,
+    useContentSize: true,
+    webPreferences: {
+      navigateOnDragDrop: false
+    }
+  })
+
+  inputWindow.loadURL(winURL)
+
+  inputWindow.on('closed', () => {
+    inputWindow = null
   })
 }
 
@@ -67,7 +97,7 @@ function createSubDropWin() {
     title: 'Pocket',
     useContentSize: true,
     alwaysOnTop: true,
-    frame: false,
+    frame: true,
     webPreferences: {
       navigateOnDragDrop: false,
       devTools: true
@@ -84,6 +114,7 @@ function createSubDropWin() {
 function init() {
   createWindow()
   // createSubDropWin()
+  // createInputWindow()
 }
 
 app.on('ready', init)
